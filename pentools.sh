@@ -84,6 +84,24 @@ software() {
 tools() {
      printf "\n${YELLOW}[*]${BLUE} Tools ------------------------------------\n"
      mkdir tools >/dev/null 2>&1
+
+     printf ${GREEN}"[+] linPeas.sh\n"
+     wget -q -O - https://github.com/carlospolop/PEASS-ng/releases/download/20230129/linpeas.sh > $TARGET/tools/linPeas.sh 2>&1
+     chmod +x $TARGET/tools/linPeas.sh
+
+     printf ${GREEN}"[+] winPeas.bat\n"
+     wget -q -O - https://github.com/carlospolop/PEASS-ng/releases/download/20230129/winPEAS.bat > $TARGET/tools/winPeas.bat 2>&1
+
+     printf ${GREEN}"[+] LinEnum.sh\n"
+     curl https://raw.githubusercontent.com/rebootuser/LinEnum/master/LinEnum.sh > $TARGET/tools/LinEnum.sh 2>&1
+     chmod +x $TARGET/tools/LinEnum.sh
+
+     printf ${GREEN}"[+] linux-exploit-suggester.sh\n"
+     curl https://raw.githubusercontent.com/The-Z-Labs/linux-exploit-suggester/master/linux-exploit-suggester.sh > $TARGET/tools/linux-exploit-suggester.sh 2>&1
+     chmod +x $TARGET/tools/linux-exploit-suggester.sh
+
+     printf ${GREEN}"[+] mimikatz.exe\n"
+     wget -q -O - https://github.com/ParrotSec/mimikatz/blob/master/Win32/mimikatz.exe > $TARGET/tools/mimikatz.exe 2>&1
 }
 
 binary() {
@@ -102,8 +120,7 @@ aliascmd() {
 
      echo "
 # Alias created by PenTools
-# https://github.com/d3vyce/pentools
-" >> ~/.bashrc
+# https://github.com/d3vyce/pentools" >> ~/.bashrc
      
      printf ${GREEN}"[+] sudo filesrv\n"
      echo "alias filesrv='sudo python3 -m http.server 80 --directory ${TARGET}'" >> ~/.bashrc

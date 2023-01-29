@@ -26,7 +26,15 @@ I'm working on a compatibility with CentOS and other distribution.
 - PWNcat
 
 ## Tools
+- linPeas
+- winPeas
+- LinEnum
+- linux-exploit-suggester
+- mimikatz
 
 ## Binary
+- nmap
 
 ## Alias
+- Python server file
+- Sublime-Text
