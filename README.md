@@ -7,7 +7,7 @@ Presentation of the tools...
 Before running the script make sure you have `go` and `pip` installed.
 
 ```Bash
-curl -L https://github.com/d3vyce/pentools/releases/latest/download/pentools.sh | sh
+bash <(curl -s https://raw.githubusercontent.com/d3vyce/PenTools/dev/pentools.sh)
 ```
 
 This script has been tested on debian distribution, but it should also work with Ubuntu.
