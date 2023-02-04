@@ -28,6 +28,7 @@ software() {
      printf ${GREEN}"[+] Sublime-text\n"
      wget -qO - https://download.sublimetext.com/sublimehq-pub.gpg | sudo apt-key add - >/dev/null 2>&1
      echo "deb https://download.sublimetext.com/ apt/stable/" | sudo tee /etc/apt/sources.list.d/sublime-text.list >/dev/null 2>&1
+     sudo apt update
      sudo apt -y install sublime-text >/dev/null 2>&1
 
      printf ${GREEN}"[+] Chrome\n"
@@ -126,18 +127,19 @@ binary() {
 aliascmd() {
      printf "\n${YELLOW}[*]${BLUE} Alias ------------------------------------\n"
 
-     sed -i '/# Alias created by PenTools/,/# https:\/\/github.com\/d3vyce\/pentools/d' ~/.bashrc
+     sed -i '/# Alias created by PenTools/,/# https:\/\/github.com\/d3vyce\/pentools/d' ~/.bash_aliases
 
      echo "
-# Alias created by PenTools" >> ~/.bashrc
+# Alias created by PenTools" >> ~/.bash_aliases
 
      printf ${GREEN}"[+] sudo filesrv\n"
-     echo "alias filesrv='sudo python3 -m http.server 80 --directory ${TARGET}'" >> ~/.bashrc
+     echo "alias filesrv='sudo python3 -m http.server 80 --directory ${TARGET}'" >> ~/.bash_aliases
 
      printf ${GREEN}"[+] sublime\n"
-     echo "alias sublime='/opt/sublime_text/sublime_text'" >> ~/.bashrc
+     echo "alias sublime='/opt/sublime_text/sublime_text'" >> ~/.bash_aliases
 
-     echo "# https://github.com/d3vyce/pentools" >> ~/.bashrc
+     echo "# https://github.com/d3vyce/pentools" >> ~/.bash_aliases
+     source ~/.bash_aliases 
 }
 
 printf "${YELLOW}
