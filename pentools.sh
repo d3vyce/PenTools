@@ -118,16 +118,18 @@ binary() {
 aliascmd() {
      printf "\n${YELLOW}[*]${BLUE} Alias ------------------------------------\n"
 
+     sed -i '/# Alias created by PenTools/,/# https:\/\/github.com\/d3vyce\/pentools/d' ~/.bashrc
+
      echo "
-# Alias created by PenTools
-# https://github.com/d3vyce/pentools" >> ~/.bashrc
-     
+# Alias created by PenTools" >> ~/.bashrc
+
      printf ${GREEN}"[+] sudo filesrv\n"
      echo "alias filesrv='sudo python3 -m http.server 80 --directory ${TARGET}'" >> ~/.bashrc
 
      printf ${GREEN}"[+] sublime\n"
-     echo "alias sublime='sublime .'" >> ~/.bashrc
+     echo "alias sublime='/opt/sublime_text/sublime_text'" >> ~/.bashrc
 
+     echo "# https://github.com/d3vyce/pentools" >> ~/.bashrc
 }
 
 printf "${YELLOW}
