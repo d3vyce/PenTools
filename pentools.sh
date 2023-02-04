@@ -107,9 +107,7 @@ tools() {
 binary() {
      printf "\n${YELLOW}[*]${BLUE} Binary -----------------------------------\n"
      mkdir binary >/dev/null 2>&1
-{
-  "external_update_url": "https://clients2.google.com/service/update2/crx"
-}
+
      printf ${GREEN}"[+] nmap\n"
      wget -q -O - https://github.com/andrew-d/static-binaries/raw/master/binaries/linux/x86_64/nmap > $TARGET/binary/nmap
      chmod +x $TARGET/binary/nmap
