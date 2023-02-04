@@ -1,6 +1,6 @@
 # PenTools
 
-![terminal](https://github.com/d3vyce/PenTools/images/terminal.png)
+![terminal](https://github.com/d3vyce/PenTools/blob/main/images/terminal.png)
 
 # Quick Start
 
