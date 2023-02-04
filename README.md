@@ -11,7 +11,7 @@ sudo apt install python-pip
 ```
 To run the script use the following command:
 ```Bash
-bash <(curl -s https://github.com/d3vyce/PenTools/releases/latest/download/pentools.sh)
+bash <(curl -L https://github.com/d3vyce/PenTools/releases/latest/download/pentools.sh)
 ```
 This script has been tested on debian distribution, but it should also work with Ubuntu.
 I'm working on a compatibility with CentOS and other distribution.
