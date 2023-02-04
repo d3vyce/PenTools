@@ -68,7 +68,7 @@ software() {
      then
           printf ${RED}"[x] Missing Go, skipping install of Fuff...\n"
      else
-          if ! command -v go &> /dev/null
+          if ! command -v ffuf &> /dev/null
           then
                printf ${GREEN}"[+] ffuf\n"
                go install github.com/ffuf/ffuf@latest >/dev/null 2>&1
@@ -81,8 +81,13 @@ software() {
      then
           printf ${RED}"[x] Missing Pip, skipping install of PwnCat...\n"
      else
-          printf ${GREEN}"[+] pwncat-cs\n"
-          sudo pip install pwncat-cs >/dev/null 2>&1
+          if ! command -v pwncat-cs &> /dev/null
+          then
+               printf ${GREEN}"[+] pwncat-cs\n"
+               sudo pip install pwncat-cs >/dev/null 2>&1
+          else
+               printf ${ITALIC_LIGHT_CYAN}"[~] pwncat-cs is already installed, skipping...\n"
+          fi
      fi
 }
 
