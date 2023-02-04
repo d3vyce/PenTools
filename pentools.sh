@@ -31,8 +31,8 @@ software() {
      sudo apt -y install sublime-text >/dev/null 2>&1
 
      printf ${GREEN}"[+] Chrome\n"
-     wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
-     sudo apt -y install ./google-chrome-stable_current_amd64.deb
+     wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb >/dev/null 2>&1
+     sudo apt -y install ./google-chrome-stable_current_amd64.deb >/dev/null 2>&1
      rm google-chrome-stable_current_amd64.deb
 
      sudo mkdir /opt/google/chrome/extensions >/dev/null 2>&1
