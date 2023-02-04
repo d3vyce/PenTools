@@ -66,15 +66,20 @@ software() {
 
      if ! command -v go &> /dev/null
      then
-          printf ${RED}"[x] Missing Go, skiping install of Fuff...\n"
+          printf ${RED}"[x] Missing Go, skipping install of Fuff...\n"
      else
-          printf ${GREEN}"[+] ffuf\n"
-          go install github.com/ffuf/ffuf@latest  
+          if ! command -v go &> /dev/null
+          then
+               printf ${GREEN}"[+] ffuf\n"
+               go install github.com/ffuf/ffuf@latest
+          else
+               printf ${ITALIC_LIGHT_CYAN}"[~] ffuf is already installed, skipping...\n"
+          fi
      fi
 
      if ! command -v pip &> /dev/null
      then
-          printf ${RED}"[x] Missing Pip, skiping install of PwnCat...\n"
+          printf ${RED}"[x] Missing Pip, skipping install of PwnCat...\n"
      else
           printf ${GREEN}"[+] pwncat-cs\n"
           pip install pwncat-cs
