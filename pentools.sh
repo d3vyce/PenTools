@@ -71,7 +71,7 @@ software() {
           if ! command -v go &> /dev/null
           then
                printf ${GREEN}"[+] ffuf\n"
-               go install github.com/ffuf/ffuf@latest
+               go install github.com/ffuf/ffuf@latest >/dev/null 2>&1
           else
                printf ${ITALIC_LIGHT_CYAN}"[~] ffuf is already installed, skipping...\n"
           fi
@@ -82,7 +82,7 @@ software() {
           printf ${RED}"[x] Missing Pip, skipping install of PwnCat...\n"
      else
           printf ${GREEN}"[+] pwncat-cs\n"
-          pip install pwncat-cs
+          sudo pip install pwncat-cs >/dev/null 2>&1
      fi
 }
 
