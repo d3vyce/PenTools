@@ -81,6 +81,9 @@ software() {
 
      printf ${GREEN}"[+] sshuttle\n"
      sudo apt install sshuttle >/dev/null 2>&1
+     
+     printf ${GREEN}"[+] nuclei\n"
+     sudo apt install nuclei >/dev/null 2>&1
 
      if ! command -v go &> /dev/null
      then
@@ -100,14 +103,6 @@ software() {
                go install github.com/jpillora/chisel@latest >/dev/null 2>&1
           else
                printf ${ITALIC_LIGHT_CYAN}"[~] chisel is already installed, skipping...\n"
-          fi
-
-          if ! command -v nuclei &> /dev/null
-          then
-               printf ${GREEN}"[+] nuclei\n"
-               go install -v github.com/projectdiscovery/nuclei/v2/cmd/nuclei@latest >/dev/null 2>&1
-          else
-               printf ${ITALIC_LIGHT_CYAN}"[~] nuclei is already installed, skipping...\n"
           fi
      fi
 
