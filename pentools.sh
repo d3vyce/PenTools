@@ -79,6 +79,9 @@ software() {
   "external_update_url": "https://clients2.google.com/service/update2/crx"
 }' > /opt/google/chrome/extensions/cmbndhnoonmghfofefkcccljbkdpamhi.json
 
+     printf ${GREEN}"[+] sshuttle\n"
+     sudo apt install sshuttle >/dev/null 2>&1
+
      if ! command -v go &> /dev/null
      then
           printf ${RED}"[x] Missing Go, skipping install of Fuff, Chisel and Nuclei...\n"
