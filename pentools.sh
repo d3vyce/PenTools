@@ -90,6 +90,22 @@ software() {
           else
                printf ${ITALIC_LIGHT_CYAN}"[~] ffuf is already installed, skipping...\n"
           fi
+
+          if ! command -v chisel &> /dev/null
+          then
+               printf ${GREEN}"[+] chisel\n"
+               go install github.com/jpillora/chisel@latest >/dev/null 2>&1
+          else
+               printf ${ITALIC_LIGHT_CYAN}"[~] chisel is already installed, skipping...\n"
+          fi
+
+          if ! command -v nuclei &> /dev/null
+          then
+               printf ${GREEN}"[+] nuclei\n"
+               go install -v github.com/projectdiscovery/nuclei/v2/cmd/nuclei@latest >/dev/null 2>&1
+          else
+               printf ${ITALIC_LIGHT_CYAN}"[~] nuclei is already installed, skipping...\n"
+          fi
      fi
 
      if ! command -v pip &> /dev/null
