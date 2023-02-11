@@ -40,6 +40,11 @@ software() {
      sudo apt update
      sudo apt -y install sublime-text >/dev/null 2>&1
 
+     printf ${GREEN}"[+] Obsidian\n"
+     wget https://github.com/obsidianmd/obsidian-releases/releases/download/v1.1.9/obsidian_1.1.9_amd64.deb >/dev/null 2>&1
+     sudo apt install ./obsidian_1.1.9_amd64.deb >/dev/null 2>&1
+     rm obsidian_1.1.9_amd64.deb
+
      printf ${GREEN}"[+] Chrome\n"
      wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb >/dev/null 2>&1
      sudo apt -y install ./google-chrome-stable_current_amd64.deb >/dev/null 2>&1
