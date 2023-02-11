@@ -81,7 +81,7 @@ software() {
 
      if ! command -v go &> /dev/null
      then
-          printf ${RED}"[x] Missing Go, skipping install of Fuff...\n"
+          printf ${RED}"[x] Missing Go, skipping install of Fuff, Chisel and Nuclei...\n"
      else
           if ! command -v ffuf &> /dev/null
           then
