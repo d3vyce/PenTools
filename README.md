@@ -4,11 +4,11 @@
 
 # Quick Start
 
-Before running the script make sure you have `go` and `pip` installed.
+Before running the script make sure you have `go`, `pip` and `rust` installed.
 ```bash
-sudo apt install gccgo-go
-sudo apt install python-pip
-curl https://sh.rustup.rs -sSf | sh
+# https://phoenixnap.com/kb/debian-install-go
+sudo apt install python-pip # pip
+curl https://sh.rustup.rs -sSf | sh # rust
 ```
 To run the script use the following command:
 ```Bash
