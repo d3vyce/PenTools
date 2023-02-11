@@ -20,6 +20,15 @@ wordlist() {
 
      printf ${GREEN}"[+] subdomains.txt\n"
      curl http://ffuf.me/wordlist/subdomains.txt > $TARGET/wordlist/subdomains.txt 2>&1
+
+     printf ${GREEN}"[+] directory-list-2.3-medium.txt\n"
+     curl https://raw.githubusercontent.com/daviddias/node-dirbuster/master/lists/directory-list-2.3-medium.txt > $TARGET/wordlist/directory-list-2.3-medium.txt 2>&1
+
+     printf ${GREEN}"[+] password.lst\n"
+     curl https://raw.githubusercontent.com/piyushcse29/john-the-ripper/master/run/password.lst > $TARGET/wordlist/password.lst 2>&1
+
+     printf ${GREEN}"[+] nmap.lst\n"
+     curl https://raw.githubusercontent.com/drtychai/wordlists/master/nmap.lst > $TARGET/wordlist/nmap.lst 2>&1
 }
 
 software() {
