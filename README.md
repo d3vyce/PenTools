@@ -22,12 +22,19 @@ I'm working on a compatibility with CentOS and other distribution.
 - rockyou.txt
 - common.txt
 - subdomains.txt
+- directory-list-2.3-medium.txt
+- password.lst
+- nmap.lst
 
 ## Software
 - Sublime Text
+- Obsidian
 - Chrome (+Extension: Dark Reader, FoxyProxy, WappAnalyser, Hack-Tools)
 - FFUF
 - PWNcat
+- Chisel
+- Nuclei
+- sshuttle
 
 ## Tools
 - linPeas
