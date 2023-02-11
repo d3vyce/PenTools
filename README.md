@@ -4,10 +4,11 @@
 
 # Quick Start
 
-Before running the script make sure you have `go` and `pip` installed.
+Before running the script make sure you have `go`, `pip` and `rust` installed.
 ```bash
-sudo apt install gccgo-go
-sudo apt install python-pip
+# https://phoenixnap.com/kb/debian-install-go
+sudo apt install python-pip # pip
+curl https://sh.rustup.rs -sSf | sh # rust
 ```
 To run the script use the following command:
 ```Bash
@@ -21,12 +22,19 @@ I'm working on a compatibility with CentOS and other distribution.
 - rockyou.txt
 - common.txt
 - subdomains.txt
+- directory-list-2.3-medium.txt
+- password.lst
+- nmap.lst
 
 ## Software
 - Sublime Text
+- Obsidian
 - Chrome (+Extension: Dark Reader, FoxyProxy, WappAnalyser, Hack-Tools)
 - FFUF
 - PWNcat
+- Chisel
+- Nuclei
+- sshuttle
 
 ## Tools
 - linPeas

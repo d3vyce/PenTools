@@ -20,6 +20,15 @@ wordlist() {
 
      printf ${GREEN}"[+] subdomains.txt\n"
      curl http://ffuf.me/wordlist/subdomains.txt > $TARGET/wordlist/subdomains.txt 2>&1
+
+     printf ${GREEN}"[+] directory-list-2.3-medium.txt\n"
+     curl https://raw.githubusercontent.com/daviddias/node-dirbuster/master/lists/directory-list-2.3-medium.txt > $TARGET/wordlist/directory-list-2.3-medium.txt 2>&1
+
+     printf ${GREEN}"[+] password.lst\n"
+     curl https://raw.githubusercontent.com/piyushcse29/john-the-ripper/master/run/password.lst > $TARGET/wordlist/password.lst 2>&1
+
+     printf ${GREEN}"[+] nmap.lst\n"
+     curl https://raw.githubusercontent.com/drtychai/wordlists/master/nmap.lst > $TARGET/wordlist/nmap.lst 2>&1
 }
 
 software() {
@@ -28,8 +37,13 @@ software() {
      printf ${GREEN}"[+] Sublime-text\n"
      wget -qO - https://download.sublimetext.com/sublimehq-pub.gpg | sudo apt-key add - >/dev/null 2>&1
      echo "deb https://download.sublimetext.com/ apt/stable/" | sudo tee /etc/apt/sources.list.d/sublime-text.list >/dev/null 2>&1
-     sudo apt update
+     sudo apt update >/dev/null 2>&1
      sudo apt -y install sublime-text >/dev/null 2>&1
+
+     printf ${GREEN}"[+] Obsidian\n"
+     wget https://github.com/obsidianmd/obsidian-releases/releases/download/v1.1.9/obsidian_1.1.9_amd64.deb >/dev/null 2>&1
+     sudo apt install ./obsidian_1.1.9_amd64.deb >/dev/null 2>&1
+     rm obsidian_1.1.9_amd64.deb
 
      printf ${GREEN}"[+] Chrome\n"
      wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb >/dev/null 2>&1
@@ -65,9 +79,15 @@ software() {
   "external_update_url": "https://clients2.google.com/service/update2/crx"
 }' > /opt/google/chrome/extensions/cmbndhnoonmghfofefkcccljbkdpamhi.json
 
+     printf ${GREEN}"[+] sshuttle\n"
+     sudo apt install sshuttle >/dev/null 2>&1
+     
+     printf ${GREEN}"[+] nuclei\n"
+     sudo apt install nuclei >/dev/null 2>&1
+
      if ! command -v go &> /dev/null
      then
-          printf ${RED}"[x] Missing Go, skipping install of Fuff...\n"
+          printf ${RED}"[x] Missing Go, skipping install of Fuff, Chisel and Nuclei...\n"
      else
           if ! command -v ffuf &> /dev/null
           then
@@ -75,6 +95,14 @@ software() {
                go install github.com/ffuf/ffuf@latest >/dev/null 2>&1
           else
                printf ${ITALIC_LIGHT_CYAN}"[~] ffuf is already installed, skipping...\n"
+          fi
+
+          if ! command -v chisel &> /dev/null
+          then
+               printf ${GREEN}"[+] chisel\n"
+               go install github.com/jpillora/chisel@latest >/dev/null 2>&1
+          else
+               printf ${ITALIC_LIGHT_CYAN}"[~] chisel is already installed, skipping...\n"
           fi
      fi
 
@@ -127,7 +155,10 @@ binary() {
 aliascmd() {
      printf "\n${YELLOW}[*]${BLUE} Alias ------------------------------------\n"
 
-     sed -i '/# Alias created by PenTools/,/# https:\/\/github.com\/d3vyce\/pentools/d' ~/.bash_aliases
+     FILE=~/.bash_aliases
+     if [ -f "$FILE" ]; then
+          sed -i '/# Alias created by PenTools/,/# https:\/\/github.com\/d3vyce\/pentools/d' ~/.bash_aliases
+     fi
 
      echo "
 # Alias created by PenTools" >> ~/.bash_aliases
@@ -151,7 +182,7 @@ printf "${YELLOW}
   /_/    \___/_/ /_/_/  \____/\____/_/____/  
                                             
  ---------------------------------------------
- v1.0 - ${ITALIC}https://github.com/d3vyce/pentools \n
+ v1.1 - ${ITALIC}https://github.com/d3vyce/pentools \n
 "
 
 printf ${YELLOW}"[*]${BLUE} What do you want to install?\n"
