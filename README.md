@@ -8,6 +8,7 @@ Before running the script make sure you have `go` and `pip` installed.
 ```bash
 sudo apt install gccgo-go
 sudo apt install python-pip
+curl https://sh.rustup.rs -sSf | sh
 ```
 To run the script use the following command:
 ```Bash
