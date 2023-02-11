@@ -37,7 +37,7 @@ software() {
      printf ${GREEN}"[+] Sublime-text\n"
      wget -qO - https://download.sublimetext.com/sublimehq-pub.gpg | sudo apt-key add - >/dev/null 2>&1
      echo "deb https://download.sublimetext.com/ apt/stable/" | sudo tee /etc/apt/sources.list.d/sublime-text.list >/dev/null 2>&1
-     sudo apt update
+     sudo apt update >/dev/null 2>&1
      sudo apt -y install sublime-text >/dev/null 2>&1
 
      printf ${GREEN}"[+] Obsidian\n"
@@ -160,7 +160,10 @@ binary() {
 aliascmd() {
      printf "\n${YELLOW}[*]${BLUE} Alias ------------------------------------\n"
 
-     sed -i '/# Alias created by PenTools/,/# https:\/\/github.com\/d3vyce\/pentools/d' ~/.bash_aliases
+     FILE=~/.bash_aliases
+     if [ -f "$FILE" ]; then
+          sed -i '/# Alias created by PenTools/,/# https:\/\/github.com\/d3vyce\/pentools/d' ~/.bash_aliases
+     fi
 
      echo "
 # Alias created by PenTools" >> ~/.bash_aliases
