@@ -200,6 +200,9 @@ PWD=$(pwd)
 read -p "${BLUE}Target [${YELLOW}$PWD${BLUE}]: ${YELLOW}" TARGET
 TARGET=${TARGET:-$PWD}
 
+read -p "${BLUE}Do you want to generate SSH key? (y/n) [${YELLOW}y${BLUE}]: ${YELLOW}" SSH_GEN
+SSH_GEN=${SSH_GEN:-y}
+
 case $CHOICE in
      1)
           wordlist
@@ -227,3 +230,10 @@ case $CHOICE in
           printf "${RED}[x] Select an option between 1 and 6"
           ;;
 esac
+
+if [ SSH_GEN -eq 'y' ]; then
+     printf ${GREEN}"[+] Creation of your ssh key pair...\n"
+     ssh-keygen -q -t rsa -N '' -f ~/.ssh/id_rsa >/dev/null 2>&1
+     printf "${ITALIC_LIGHT_CYAN}"
+     cat ~/.ssh/id_rsa.pub
+fi
