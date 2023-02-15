@@ -88,20 +88,17 @@ software() {
      printf ${GREEN}"[+] nuclei\n"
      sudo apt install nuclei -y >/dev/null 2>&1
 
-     if ! command -v go &> /dev/null
-     then
+     if ! command -v go &> /dev/null; then
           printf ${RED}"[x] Missing Go, skipping install of Fuff, Chisel and Nuclei...\n"
      else
-          if ! command -v ffuf &> /dev/null
-          then
+          if ! command -v ffuf &> /dev/null; then
                printf ${GREEN}"[+] ffuf\n"
                go install github.com/ffuf/ffuf@latest >/dev/null 2>&1
           else
                printf ${ITALIC_LIGHT_CYAN}"[~] ffuf is already installed, skipping...\n"
           fi
 
-          if ! command -v chisel &> /dev/null
-          then
+          if ! command -v chisel &> /dev/null; then
                printf ${GREEN}"[+] chisel\n"
                go install github.com/jpillora/chisel@latest >/dev/null 2>&1
           else
@@ -109,12 +106,10 @@ software() {
           fi
      fi
 
-     if ! command -v pip &> /dev/null
-     then
+     if ! command -v pip &> /dev/null; then
           printf ${RED}"[x] Missing Pip, skipping install of PwnCat...\n"
      else
-          if ! command -v pwncat-cs &> /dev/null
-          then
+          if ! command -v pwncat-cs &> /dev/null; then
                printf ${GREEN}"[+] pwncat-cs\n"
                sudo pip install pwncat-cs >/dev/null 2>&1
           else
