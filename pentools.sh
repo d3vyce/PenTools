@@ -167,6 +167,9 @@ aliascmd() {
      printf ${GREEN}"[+] sublime\n"
      echo "alias sublime='/opt/sublime_text/sublime_text'" >> ~/.bash_aliases
 
+     printf ${GREEN}"[+] pwncat [port]\n"
+     echo "alias sublime='sudo pwncat-cs --listen --port '" >> ~/.bash_aliases
+
      echo "# https://github.com/d3vyce/pentools" >> ~/.bash_aliases
      source ~/.bash_aliases 
 }
