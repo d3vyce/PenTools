@@ -79,6 +79,9 @@ software() {
   "external_update_url": "https://clients2.google.com/service/update2/crx"
 }' > /opt/google/chrome/extensions/cmbndhnoonmghfofefkcccljbkdpamhi.json
 
+     printf ${GREEN}"[+] terminator\n"
+     sudo apt install terminator -y >/dev/null 2>&1
+
      printf ${GREEN}"[+] sshuttle\n"
      sudo apt install sshuttle >/dev/null 2>&1
      
