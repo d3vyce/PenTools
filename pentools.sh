@@ -83,10 +83,10 @@ software() {
      sudo apt install terminator -y >/dev/null 2>&1
 
      printf ${GREEN}"[+] sshuttle\n"
-     sudo apt install sshuttle >/dev/null 2>&1
+     sudo apt install sshuttle -y >/dev/null 2>&1
      
      printf ${GREEN}"[+] nuclei\n"
-     sudo apt install nuclei >/dev/null 2>&1
+     sudo apt install nuclei -y >/dev/null 2>&1
 
      if ! command -v go &> /dev/null
      then
