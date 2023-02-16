@@ -96,32 +96,38 @@ software() {
      sudo apt install nuclei -y >/dev/null 2>&1
 
      if ! command -v go &> /dev/null; then
-          printf ${RED}"[x] Missing Go, skipping install of Fuff, Chisel and Nuclei...\n"
-     else
-          if ! command -v ffuf &> /dev/null; then
-               printf ${GREEN}"[+] ffuf\n"
-               go install github.com/ffuf/ffuf@latest >/dev/null 2>&1
-          else
-               printf ${ITALIC_LIGHT_CYAN}"[~] ffuf is already installed, skipping...\n"
-          fi
+          printf ${GREEN}"[+] go\n"
+          wget https://go.dev/dl/go1.20.1.linux-amd64.tar.gz >/dev/null 2>&1
+          sudo tar -C /usr/local -xzf go1.20.1.linux-amd64.tar.gz >/dev/null 2>&1
+          rm go1.20.1.linux-amd64.tar.gz
+          echo 'export PATH=$PATH:/usr/local/go/bin' >> ~/.profile
+          source ~/.profile 
+     fi
 
-          if ! command -v chisel &> /dev/null; then
-               printf ${GREEN}"[+] chisel\n"
-               go install github.com/jpillora/chisel@latest >/dev/null 2>&1
-          else
-               printf ${ITALIC_LIGHT_CYAN}"[~] chisel is already installed, skipping...\n"
-          fi
+     if ! command -v ffuf &> /dev/null; then
+          printf ${GREEN}"[+] ffuf\n"
+          go install github.com/ffuf/ffuf@latest >/dev/null 2>&1
+     else
+          printf ${ITALIC_LIGHT_CYAN}"[~] ffuf is already installed, skipping...\n"
+     fi
+
+     if ! command -v chisel &> /dev/null; then
+          printf ${GREEN}"[+] chisel\n"
+          go install github.com/jpillora/chisel@latest >/dev/null 2>&1
+     else
+          printf ${ITALIC_LIGHT_CYAN}"[~] chisel is already installed, skipping...\n"
      fi
 
      if ! command -v pip &> /dev/null; then
-          printf ${RED}"[x] Missing Pip, skipping install of PwnCat...\n"
+          printf ${GREEN}"[+] pip\n"
+          sudo apt install python-pip -y
+     fi
+
+     if ! command -v pwncat-cs &> /dev/null; then
+          printf ${GREEN}"[+] pwncat-cs\n"
+          sudo pip install pwncat-cs >/dev/null 2>&1
      else
-          if ! command -v pwncat-cs &> /dev/null; then
-               printf ${GREEN}"[+] pwncat-cs\n"
-               sudo pip install pwncat-cs >/dev/null 2>&1
-          else
-               printf ${ITALIC_LIGHT_CYAN}"[~] pwncat-cs is already installed, skipping...\n"
-          fi
+          printf ${ITALIC_LIGHT_CYAN}"[~] pwncat-cs is already installed, skipping...\n"
      fi
 }
 
