@@ -4,12 +4,6 @@
 
 # Quick Start
 
-Before running the script make sure you have `go`, `pip` and `rust` installed.
-```bash
-# https://phoenixnap.com/kb/debian-install-go
-sudo apt install python-pip # pip
-curl https://sh.rustup.rs -sSf | sh # rust
-```
 To run the script use the following command:
 ```Bash
 bash <(curl -L https://github.com/d3vyce/PenTools/releases/latest/download/pentools.sh)
@@ -29,7 +23,8 @@ I'm working on a compatibility with CentOS and other distribution.
 ## Software
 - Sublime Text
 - Obsidian
-- Chrome (+Extension: Dark Reader, FoxyProxy, WappAnalyser, Hack-Tools)
+- Chrome (+Extension: Dark Reader, FoxyProxy, WappAnalyser, Hack-Tools, Bitwarden)
+- Terminator
 - FFUF
 - PWNcat
 - Chisel
@@ -48,7 +43,12 @@ I'm working on a compatibility with CentOS and other distribution.
 
 ## Alias
 - Python server file in pentools folder (command: `filesrv`)
-- Open Sublime-Text (command : `sublime`) -> To open Sublime-Text in current folder : `sublime .`
+- Open Sublime-Text (command: `sublime`) -> To open Sublime-Text in current folder : `sublime .`
+- OpenVPN (command: `vpn [file.ovpn]`)
+- Pwncat (command: `pwncat [port]`)
+
+## Automation
+- SSH keygen
 
 # Contribute to the project
 To participate in the project, you can propose new implementations of tools/binary/software/... via issues or merge request.
