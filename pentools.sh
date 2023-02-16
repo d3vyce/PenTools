@@ -79,6 +79,13 @@ software() {
   "external_update_url": "https://clients2.google.com/service/update2/crx"
 }' > /opt/google/chrome/extensions/cmbndhnoonmghfofefkcccljbkdpamhi.json
 
+     printf ${GREEN}"[+] Chrome Extension: Bitwarden\n"
+     sudo touch /opt/google/chrome/extensions/nngceckbapebfimnlniiiahkandclblb.json
+     sudo chmod 646 /opt/google/chrome/extensions/nngceckbapebfimnlniiiahkandclblb.json
+     sudo echo '{
+  "external_update_url": "https://clients2.google.com/service/update2/crx"
+}' > /opt/google/chrome/extensions/nngceckbapebfimnlniiiahkandclblb.json
+
      printf ${GREEN}"[+] terminator\n"
      sudo apt install terminator -y >/dev/null 2>&1
 
