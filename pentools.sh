@@ -171,6 +171,13 @@ aliascmd() {
           sed -i '/# Alias created by PenTools/,/# https:\/\/github.com\/d3vyce\/pentools/d' ~/.bash_aliases
      fi
 
+     if ! grep -q ".bash_aliases" ~/.zshrc >/dev/null 2>&1; then
+          echo '{
+if [ -f ~/.bash_aliases ]; then
+    . ~/.bash_aliases
+fi}' >> ~/.zshrc
+     fi
+
      echo "
 # Alias created by PenTools" >> ~/.bash_aliases
 
