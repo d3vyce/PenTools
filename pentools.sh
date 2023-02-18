@@ -181,10 +181,10 @@ aliascmd() {
      echo "alias sublime='/opt/sublime_text/sublime_text'" >> ~/.bash_aliases
 
      printf ${GREEN}"[+] pwncat [port]\n"
-     echo "alias sublime='sudo pwncat-cs --listen --port '" >> ~/.bash_aliases
+     echo "alias pwncat='sudo pwncat-cs --listen --port '" >> ~/.bash_aliases
 
      printf ${GREEN}"[+] openvpn [file.ovpn]\n"
-     echo "alias sublime='sudo openvpn '" >> ~/.bash_aliases
+     echo "alias vpn='sudo openvpn '" >> ~/.bash_aliases
 
      echo "# https://github.com/d3vyce/pentools" >> ~/.bash_aliases
      source ~/.bash_aliases 
