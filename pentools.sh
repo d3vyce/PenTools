@@ -248,7 +248,16 @@ case $CHOICE in
           ;;
 esac
 
-if [ SSH_GEN -eq 'y' ]; then
+if [ $SSH_GEN == 'y' ]; then
+     FILE=~/.ssh/id_rsa
+     if [ -f "$FILE" ]; then
+          read -p "${BLUE}SSH keys are already present, do you want to saved them up before generating new ones? (y/n) [${YELLOW}y${BLUE}]: ${YELLOW}" SSH_SAVE
+          SSH_SAVE=${SSH_SAVE:-y}
+          if [ $SSH_SAVE == 'y' ]; then
+               mv ~/.ssh/id_rsa ~/.ssh/id_rsa.save
+               mv ~/.ssh/id_rsa.pub ~/.ssh/id_rsa.pub.save
+          fi
+     fi
      printf ${GREEN}"[+] Creation of your ssh key pair...\n"
      ssh-keygen -q -t rsa -N '' -f ~/.ssh/id_rsa >/dev/null 2>&1
      printf "${ITALIC_LIGHT_CYAN}"
