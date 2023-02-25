@@ -79,44 +79,56 @@ software() {
   "external_update_url": "https://clients2.google.com/service/update2/crx"
 }' > /opt/google/chrome/extensions/cmbndhnoonmghfofefkcccljbkdpamhi.json
 
+     printf ${GREEN}"[+] Chrome Extension: Bitwarden\n"
+     sudo touch /opt/google/chrome/extensions/nngceckbapebfimnlniiiahkandclblb.json
+     sudo chmod 646 /opt/google/chrome/extensions/nngceckbapebfimnlniiiahkandclblb.json
+     sudo echo '{
+  "external_update_url": "https://clients2.google.com/service/update2/crx"
+}' > /opt/google/chrome/extensions/nngceckbapebfimnlniiiahkandclblb.json
+
+     printf ${GREEN}"[+] terminator\n"
+     sudo apt install terminator -y >/dev/null 2>&1
+
      printf ${GREEN}"[+] sshuttle\n"
-     sudo apt install sshuttle >/dev/null 2>&1
+     sudo apt install sshuttle -y >/dev/null 2>&1
      
      printf ${GREEN}"[+] nuclei\n"
-     sudo apt install nuclei >/dev/null 2>&1
+     sudo apt install nuclei -y >/dev/null 2>&1
 
-     if ! command -v go &> /dev/null
-     then
-          printf ${RED}"[x] Missing Go, skipping install of Fuff, Chisel and Nuclei...\n"
-     else
-          if ! command -v ffuf &> /dev/null
-          then
-               printf ${GREEN}"[+] ffuf\n"
-               go install github.com/ffuf/ffuf@latest >/dev/null 2>&1
-          else
-               printf ${ITALIC_LIGHT_CYAN}"[~] ffuf is already installed, skipping...\n"
-          fi
-
-          if ! command -v chisel &> /dev/null
-          then
-               printf ${GREEN}"[+] chisel\n"
-               go install github.com/jpillora/chisel@latest >/dev/null 2>&1
-          else
-               printf ${ITALIC_LIGHT_CYAN}"[~] chisel is already installed, skipping...\n"
-          fi
+     if ! command -v go &> /dev/null; then
+          printf ${GREEN}"[+] go\n"
+          wget https://go.dev/dl/go1.20.1.linux-amd64.tar.gz >/dev/null 2>&1
+          sudo tar -C /usr/local -xzf go1.20.1.linux-amd64.tar.gz >/dev/null 2>&1
+          rm go1.20.1.linux-amd64.tar.gz
+          echo 'export PATH=$PATH:/usr/local/go/bin' >> ~/.profile
+          source ~/.profile 
      fi
 
-     if ! command -v pip &> /dev/null
-     then
-          printf ${RED}"[x] Missing Pip, skipping install of PwnCat...\n"
+     if ! command -v ffuf &> /dev/null; then
+          printf ${GREEN}"[+] ffuf\n"
+          go install github.com/ffuf/ffuf@latest >/dev/null 2>&1
      else
-          if ! command -v pwncat-cs &> /dev/null
-          then
-               printf ${GREEN}"[+] pwncat-cs\n"
-               sudo pip install pwncat-cs >/dev/null 2>&1
-          else
-               printf ${ITALIC_LIGHT_CYAN}"[~] pwncat-cs is already installed, skipping...\n"
-          fi
+          printf ${ITALIC_LIGHT_CYAN}"[~] ffuf is already installed, skipping...\n"
+
+     fi
+
+     if ! command -v chisel &> /dev/null; then
+          printf ${GREEN}"[+] chisel\n"
+          go install github.com/jpillora/chisel@latest >/dev/null 2>&1
+     else
+          printf ${ITALIC_LIGHT_CYAN}"[~] chisel is already installed, skipping...\n"
+     fi
+
+     if ! command -v pip &> /dev/null; then
+          printf ${GREEN}"[+] pip\n"
+          sudo apt install python-pip -y
+     fi
+
+     if ! command -v pwncat-cs &> /dev/null; then
+          printf ${GREEN}"[+] pwncat-cs\n"
+          sudo pip install pwncat-cs >/dev/null 2>&1
+     else
+          printf ${ITALIC_LIGHT_CYAN}"[~] pwncat-cs is already installed, skipping...\n"
      fi
 }
 
@@ -160,6 +172,13 @@ aliascmd() {
           sed -i '/# Alias created by PenTools/,/# https:\/\/github.com\/d3vyce\/pentools/d' ~/.bash_aliases
      fi
 
+     if ! grep -q ".bash_aliases" ~/.zshrc >/dev/null 2>&1; then
+          echo '{
+if [ -f ~/.bash_aliases ]; then
+    . ~/.bash_aliases
+fi}' >> ~/.zshrc
+     fi
+
      echo "
 # Alias created by PenTools" >> ~/.bash_aliases
 
@@ -168,6 +187,12 @@ aliascmd() {
 
      printf ${GREEN}"[+] sublime\n"
      echo "alias sublime='/opt/sublime_text/sublime_text'" >> ~/.bash_aliases
+
+     printf ${GREEN}"[+] pwncat [port]\n"
+     echo "alias pwncat='sudo pwncat-cs --listen --port '" >> ~/.bash_aliases
+
+     printf ${GREEN}"[+] openvpn [file.ovpn]\n"
+     echo "alias vpn='sudo openvpn '" >> ~/.bash_aliases
 
      echo "# https://github.com/d3vyce/pentools" >> ~/.bash_aliases
      source ~/.bash_aliases 
@@ -182,7 +207,7 @@ printf "${YELLOW}
   /_/    \___/_/ /_/_/  \____/\____/_/____/  
                                             
  ---------------------------------------------
- v1.1 - ${ITALIC}https://github.com/d3vyce/pentools \n
+ v1.2 - ${ITALIC}https://github.com/d3vyce/pentools \n
 "
 
 printf ${YELLOW}"[*]${BLUE} What do you want to install?\n"
@@ -199,6 +224,9 @@ CHOICE=${CHOICE:-1}
 PWD=$(pwd)
 read -p "${BLUE}Target [${YELLOW}$PWD${BLUE}]: ${YELLOW}" TARGET
 TARGET=${TARGET:-$PWD}
+
+read -p "${BLUE}Do you want to generate SSH key? (y/n) [${YELLOW}y${BLUE}]: ${YELLOW}" SSH_GEN
+SSH_GEN=${SSH_GEN:-y}
 
 case $CHOICE in
      1)
@@ -227,3 +255,19 @@ case $CHOICE in
           printf "${RED}[x] Select an option between 1 and 6"
           ;;
 esac
+
+if [ $SSH_GEN == 'y' ]; then
+     FILE=~/.ssh/id_rsa
+     if [ -f "$FILE" ]; then
+          read -p "${BLUE}SSH keys are already present, do you want to saved them up before generating new ones? (y/n) [${YELLOW}y${BLUE}]: ${YELLOW}" SSH_SAVE
+          SSH_SAVE=${SSH_SAVE:-y}
+          if [ $SSH_SAVE == 'y' ]; then
+               mv ~/.ssh/id_rsa ~/.ssh/id_rsa.save
+               mv ~/.ssh/id_rsa.pub ~/.ssh/id_rsa.pub.save
+          fi
+     fi
+     printf ${GREEN}"[+] Creation of your ssh key pair...\n"
+     ssh-keygen -q -t rsa -N '' -f ~/.ssh/id_rsa >/dev/null 2>&1
+     printf "${ITALIC_LIGHT_CYAN}"
+     cat ~/.ssh/id_rsa.pub
+fi
