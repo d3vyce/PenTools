@@ -109,6 +109,7 @@ software() {
           go install github.com/ffuf/ffuf@latest >/dev/null 2>&1
      else
           printf ${ITALIC_LIGHT_CYAN}"[~] ffuf is already installed, skipping...\n"
+
      fi
 
      if ! command -v chisel &> /dev/null; then
