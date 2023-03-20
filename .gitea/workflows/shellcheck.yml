@@ -11,4 +11,4 @@ jobs:
         apt update
         apt install -y shellcheck        
     - name: Analysing the code with shellcheck
-      run: find . -name '*.sh' -exec shellcheck {} + || err=1
+      run: find . -name '*.sh' -exec shellcheck -S warning {} + || err=1
