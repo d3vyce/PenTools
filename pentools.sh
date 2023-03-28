@@ -195,7 +195,7 @@ fi}' >> ~/.zshrc
      echo "alias vpn='sudo openvpn '" >> ~/.bash_aliases
 
      echo "# https://github.com/d3vyce/pentools" >> ~/.bash_aliases
-     source $HOME/.bash_aliases 
+     source $HOME/.zshrc
 }
 
 printf "${YELLOW}
