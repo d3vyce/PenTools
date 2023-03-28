@@ -156,6 +156,9 @@ tools() {
 
      printf ${GREEN}"[+] Sherlock.ps1\n"
      curl https://raw.githubusercontent.com/rasta-mouse/Sherlock/master/Sherlock.ps1 > $TARGET/tools/Sherlock.ps1 2>&1
+
+     printf ${GREEN}"[+] laps.py\n"
+     curl https://raw.githubusercontent.com/n00py/LAPSDumper/main/laps.py > $TARGET/tools/laps.py 2>&1
 }
 
 binary() {
