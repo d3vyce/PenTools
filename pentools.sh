@@ -153,6 +153,9 @@ tools() {
 
      printf ${GREEN}"[+] mimikatz.exe\n"
      wget -q -O - https://github.com/ParrotSec/mimikatz/blob/master/Win32/mimikatz.exe > $TARGET/tools/mimikatz.exe 2>&1
+
+     printf ${GREEN}"[+] Sherlock.ps1\n"
+     curl https://raw.githubusercontent.com/rasta-mouse/Sherlock/master/Sherlock.ps1 > $TARGET/tools/Sherlock.ps1 2>&1
 }
 
 binary() {
