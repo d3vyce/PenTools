@@ -9,6 +9,6 @@ jobs:
     - name: Set up shellcheck
       run: |
         apt update
-        apt install -y shellcheck        
+        apt install -y shellcheck                        
     - name: Analysing the code with shellcheck
-      run: shellcheck -S warning *.sh
+      run: find . -type f -name "*.sh" | xargs shellcheck -S warning
