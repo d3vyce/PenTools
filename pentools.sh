@@ -162,6 +162,10 @@ binary() {
      printf ${GREEN}"[+] nmap\n"
      wget -q -O - https://github.com/andrew-d/static-binaries/raw/master/binaries/linux/x86_64/nmap > $TARGET/binary/nmap
      chmod +x $TARGET/binary/nmap
+
+     printf ${GREEN}"[+] pspy64\n"
+     wget -q -O - https://github.com/DominicBreuker/pspy/releases/download/v1.2.1/pspy64 > $TARGET/binary/pspy64
+     chmod +x $TARGET/binary/pspy64
 }
 
 aliascmd() {
