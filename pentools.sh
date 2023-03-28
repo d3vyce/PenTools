@@ -207,7 +207,7 @@ printf "${YELLOW}
   /_/    \___/_/ /_/_/  \____/\____/_/____/  
                                             
  ---------------------------------------------
- v1.2 - ${ITALIC}https://github.com/d3vyce/pentools \n
+ v1.3 - ${ITALIC}https://github.com/d3vyce/pentools \n
 "
 
 printf ${YELLOW}"[*]${BLUE} What do you want to install?\n"
