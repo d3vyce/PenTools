@@ -54,35 +54,35 @@ software() {
      printf ${GREEN}"[+] Chrome Extension: FoxyProxy\n"
      sudo touch /opt/google/chrome/extensions/gcknhkkoolaabfmlnjonogaaifnjlfnp.json
      sudo chmod 646 /opt/google/chrome/extensions/gcknhkkoolaabfmlnjonogaaifnjlfnp.json
-     sudo echo '{
+     echo '{
   "external_update_url": "https://clients2.google.com/service/update2/crx"
 }' > /opt/google/chrome/extensions/gcknhkkoolaabfmlnjonogaaifnjlfnp.json
 
      printf ${GREEN}"[+] Chrome Extension: Dark Reader\n"
      sudo touch /opt/google/chrome/extensions/eimadpbcbfnmbkopoojfekhnkhdbieeh.json
      sudo chmod 646 /opt/google/chrome/extensions/eimadpbcbfnmbkopoojfekhnkhdbieeh.json
-     sudo echo '{
+     echo '{
   "external_update_url": "https://clients2.google.com/service/update2/crx"
 }' > /opt/google/chrome/extensions/eimadpbcbfnmbkopoojfekhnkhdbieeh.json
 
      printf ${GREEN}"[+] Chrome Extension: WappAnalyser\n"
      sudo touch /opt/google/chrome/extensions/gppongmhjkpfnbhagpmjfkannfbllamg.json
      sudo chmod 646 /opt/google/chrome/extensions/gppongmhjkpfnbhagpmjfkannfbllamg.json
-     sudo echo '{
+     echo '{
   "external_update_url": "https://clients2.google.com/service/update2/crx"
 }' > /opt/google/chrome/extensions/gppongmhjkpfnbhagpmjfkannfbllamg.json
 
      printf ${GREEN}"[+] Chrome Extension: Hack-Tools\n"
      sudo touch /opt/google/chrome/extensions/cmbndhnoonmghfofefkcccljbkdpamhi.json
      sudo chmod 646 /opt/google/chrome/extensions/cmbndhnoonmghfofefkcccljbkdpamhi.json
-     sudo echo '{
+     echo '{
   "external_update_url": "https://clients2.google.com/service/update2/crx"
 }' > /opt/google/chrome/extensions/cmbndhnoonmghfofefkcccljbkdpamhi.json
 
      printf ${GREEN}"[+] Chrome Extension: Bitwarden\n"
      sudo touch /opt/google/chrome/extensions/nngceckbapebfimnlniiiahkandclblb.json
      sudo chmod 646 /opt/google/chrome/extensions/nngceckbapebfimnlniiiahkandclblb.json
-     sudo echo '{
+     echo '{
   "external_update_url": "https://clients2.google.com/service/update2/crx"
 }' > /opt/google/chrome/extensions/nngceckbapebfimnlniiiahkandclblb.json
 
@@ -101,7 +101,7 @@ software() {
           sudo tar -C /usr/local -xzf go1.20.1.linux-amd64.tar.gz >/dev/null 2>&1
           rm go1.20.1.linux-amd64.tar.gz
           echo 'export PATH=$PATH:/usr/local/go/bin' >> ~/.profile
-          source ~/.profile 
+          source $HOME/.profile 
      fi
 
      if ! command -v ffuf &> /dev/null; then
@@ -195,7 +195,7 @@ fi}' >> ~/.zshrc
      echo "alias vpn='sudo openvpn '" >> ~/.bash_aliases
 
      echo "# https://github.com/d3vyce/pentools" >> ~/.bash_aliases
-     source ~/.bash_aliases 
+     source $HOME/.bash_aliases 
 }
 
 printf "${YELLOW}
