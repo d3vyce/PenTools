@@ -13,7 +13,7 @@ wordlist() {
      mkdir $TARGET/wordlist >/dev/null 2>&1
 
      printf ${GREEN}"[+] rockyou.txt\n"
-     curl https://github.com/brannondorsey/naive-hashcat/releases/download/data/rockyou.txt > $TARGET/wordlist/rockyou.txt 2>&1
+     wget -q -O - https://github.com/brannondorsey/naive-hashcat/releases/download/data/rockyou.txt > $TARGET/wordlist/rockyou.txt 2>&1
 
      printf ${GREEN}"[+] common.txt\n"
      curl http://ffuf.me/wordlist/common.txt > $TARGET/wordlist/common.txt 2>&1
